@@ -21,8 +21,8 @@ public class Dealer {
     private void playGame() {
         for (Phase phase : Phase.values()) {
             System.out.println("Phase: " + phase);
-            System.out.println("=================================================================");
             drawCards(phase);
+            System.out.println("=================================================================");
             showPlayers();
         }
     }
@@ -45,7 +45,6 @@ public class Dealer {
         System.out.println("flop:    " + //
                 this.flop.stream().sorted(Comparator.comparing(Card::getRank)).toList() //
         );
-        System.out.println("#################################################################");
     }
 
     private void distributeCards(int totalPlayer) {

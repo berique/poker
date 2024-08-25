@@ -14,12 +14,12 @@ public class Card {
         Rank rank = null;
         Suit suit = null;
 
-        String cardRankSubstring1 = c.substring(0, 1);
-        String rank2 = c.substring(0, 2);
+        String cardRankSubstring = c.substring(0, 1);
+        String rank1 = c.substring(0, 2);
         String suit1 = c.substring(1);
         String suit2 = c.substring(2);
         for (Rank value : Rank.values()) {
-            if (value.toString().equalsIgnoreCase(cardRankSubstring1) || value.toString().equalsIgnoreCase(rank2)) {
+            if (value.toString().equalsIgnoreCase(cardRankSubstring) || value.toString().equalsIgnoreCase(rank1)) {
                 rank = value;
                 break;
             }
@@ -48,6 +48,6 @@ public class Card {
 
     @Override
     public String toString() {
-        return String.valueOf(this.rank) + String.valueOf(suit);
+        return this.rank + String.valueOf(this.suit);
     }
 }
