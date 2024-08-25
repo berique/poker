@@ -5,18 +5,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
-    private String name;
-    private List<Card> hand;
-    private BigInteger points;
-
-    private Player() {
-        this.hand = new ArrayList<>();
-    }
+    private final String name;
+    private final List<Card> hand;
+    private final BigInteger points;
+    private final PlayerBehavior playerBehavior;
 
     public Player(String name, BigInteger points) {
-        this();
+        this.hand = new ArrayList<>();
         this.points = points;
         this.name = name;
+        this.playerBehavior = null;
+    }
+
+    public Player(String name, BigInteger points, PlayerBehavior playerBehavior) {
+        this.hand = new ArrayList<>();
+        this.points = points;
+        this.name = name;
+        this.playerBehavior = playerBehavior;
     }
 
     public String getName() {
@@ -33,10 +38,10 @@ public class Player {
 
     @Override
     public String toString() {
-        return "Player{" +
-                "name='" + name + '\'' +
-                ", hand=" + hand +
-                ", points=" + points +
-                '}';
+        return "Player{" + //
+                "name='" + name + "'" + //
+                ", hand=" + hand + //
+                ", points=" + points + //
+                "}";
     }
 }
