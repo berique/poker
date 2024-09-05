@@ -1,6 +1,7 @@
 package poker;
 
 import org.junit.jupiter.api.Test;
+import poker.evaluate.CardEvaluation;
 
 import java.util.ArrayList;
 import java.util.List;

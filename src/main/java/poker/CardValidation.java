@@ -1,5 +1,7 @@
 package poker;
 
+import poker.evaluate.CardEvaluation;
+
 import java.util.List;
 
 public class CardValidation {

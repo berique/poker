@@ -2,6 +2,6 @@ package poker;
 
 public class Main {
     public static void main(String[] args) {
-        Dealer dealer = new Dealer();
+        new Dealer(PokerType.TEXAS_HOLDEN);
     }
 }

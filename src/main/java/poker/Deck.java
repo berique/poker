@@ -29,11 +29,11 @@ public class Deck {
         return cards;
     }
 
-    public Card getOneCard() {
-        return getCards(1).getFirst();
+    public Card takeOneCard() {
+        return takeCards(1).getFirst();
     }
 
-    public List<Card> getCards(int qty) {
+    public List<Card> takeCards(int qty) {
         List<Card> cards = new ArrayList<>();
         for (int x = 0; x < qty; x++) {
             cards.add(this.cards.removeFirst());

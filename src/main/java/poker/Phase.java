@@ -7,13 +7,13 @@ public enum Phase {
     RIVER(1),
     ;
 
-    private final int qty;
+    private final int totalCards;
 
-    Phase(int qty) {
-        this.qty = qty;
+    Phase(int totalCards) {
+        this.totalCards = totalCards;
     }
 
-    public int getQty() {
-        return qty;
+    public int getTotalCards() {
+        return totalCards;
     }
 }

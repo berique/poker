@@ -4,11 +4,11 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Player {
+public class Player implements PlayerObserver {
     private final String name;
     private final List<Card> hand;
-    private final BigInteger points;
     private final PlayerBehavior playerBehavior;
+    private BigInteger points;
 
     public Player(String name, BigInteger points) {
         this.hand = new ArrayList<>();

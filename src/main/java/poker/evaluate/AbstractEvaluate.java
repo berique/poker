@@ -28,7 +28,7 @@ public abstract class AbstractEvaluate implements Evaluate {
         return Stream.concat(a.stream(), b.stream()).toList();
     }
 
-    public Card[] unionArray(List<Card> a, List<Card> b) {
+    public Card[] unionList(List<Card> a, List<Card> b) {
         return Stream.concat(a.stream(), b.stream()).toArray(Card[]::new);
     }
 

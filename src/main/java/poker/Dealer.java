@@ -1,5 +1,6 @@
 package poker;
 
+import java.io.PrintStream;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -10,55 +11,67 @@ public class Dealer {
     private final Deck deck = new Deck();
     private final List<Player> players = new ArrayList<>();
     private final List<Card> flop = new ArrayList<>();
+    private final PrintStream out = System.out;
 
-    public Dealer() {
-        int totalPlayer = ThreadLocalRandom.current().nextInt(2, 9);
+    public Dealer(PokerType pokerType) {
+        int totalPlayer = ThreadLocalRandom.current().nextInt(2, pokerType.getTotalPlayers());
         generatePlayers(totalPlayer);
-        distributeCards(totalPlayer);
+        distributeCards(pokerType.getTotalCards(), totalPlayer);
         playGame();
     }
 
     private void playGame() {
         for (Phase phase : Phase.values()) {
-            System.out.println("Phase: " + phase);
+            out.println(padding("Phase:", phase));
             drawCards(phase);
-            System.out.println("=================================================================");
+            out.println(repeat("="));
             showPlayers();
         }
     }
 
-    private void showPlayers() {
+    private String padding(String s, Object phase) {
+        return s + " ".repeat(Math.max(15 - s.length(), 0)) + phase;
+    }
 
+    private String repeat(String ch) {
+        return ch.repeat(65);
+    }
+
+    private void showPlayers() {
         for (Player player : this.players) {
             List<Card> hand = player.getHand();
-            System.out.println("player name:  " + player.getName());
-            System.out.println("player hand:  " + player.getHand().stream().sorted(Comparator.comparing(Card::getRank)).toList());
-            System.out.println("Eval:         " + CardValidation.validate(hand, flop));
-            System.out.println("-----------------------------------------------------------------");
+            out.println(padding("Player name:", player.getName()));
+            out.println(padding("Player hand:", byRank(player.getHand())));
+            out.println(padding("Eval:", CardValidation.validate(hand, flop)));
+            out.println(repeat("-"));
         }
+    }
+
+    private List<Card> byRank(List<Card> cards) {
+        return cards.stream().sorted(Comparator.comparing(Card::getRank)).toList();
     }
 
     private void drawCards(Phase phase) {
-        for (int x = 0; x < phase.getQty(); x++) {
-            this.flop.add(this.deck.getOneCard());
-        }
-        System.out.println("flop:    " + //
-                this.flop.stream().sorted(Comparator.comparing(Card::getRank)).toList() //
-        );
+        this.flop.addAll(this.deck.takeCards(phase.getTotalCards()));
+        out.println(repeat("#"));
+        out.println(padding( //
+                "Flop:", //
+                this.flop //
+        ));
     }
 
-    private void distributeCards(int totalPlayer) {
-        for (int x = 0; x < totalPlayer; x++) {
-            Player player = players.get(x);
-            player.getHand().add(deck.getOneCard());
+    private void distributeCards(int totalCards, int totalPlayer) {
+        for (int y = 0; y < totalCards; y++) {
+            for (int x = 0; x < totalPlayer; x++) {
+                players.get(x).getHand().add(deck.takeOneCard());
+            }
         }
     }
 
     private void generatePlayers(int totalPlayer) {
-        System.out.println("Qtd. jogadores: " + totalPlayer);
+        out.println(padding("Qtd. jogadores:", totalPlayer));
         for (int x = 0; x < totalPlayer; x++) {
             Player player = new Player("Player " + (x + 1), new BigInteger("10000"));
-            player.getHand().add(deck.getOneCard());
             players.add(player);
         }
     }

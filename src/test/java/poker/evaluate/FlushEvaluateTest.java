@@ -8,8 +8,7 @@ import poker.Suit;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class FlushEvaluateTest {
 
@@ -23,8 +22,8 @@ class FlushEvaluateTest {
         board.add(new Card(Rank.SIX, Suit.CLUBS));
         board.add(new Card(Rank.KING, Suit.CLUBS));
         board.add(new Card(Rank.QUEEN, Suit.CLUBS));
-        FlushEvaluate flushEvaluate = new FlushEvaluate();
-        assertTrue(flushEvaluate.evaluate(hands, board));
+
+        assertEquals(true, new FlushEvaluate().evaluate(hands, board));
     }
 
     @Test
@@ -37,7 +36,7 @@ class FlushEvaluateTest {
         board.add(new Card(Rank.SIX, Suit.CLUBS));
         board.add(new Card(Rank.KING, Suit.CLUBS));
         board.add(new Card(Rank.QUEEN, Suit.CLUBS));
-        FlushEvaluate flushEvaluate = new FlushEvaluate();
-        assertFalse(flushEvaluate.evaluate(hands, board));
+
+        assertFalse(new FlushEvaluate().evaluate(hands, board));
     }
 }

@@ -10,7 +10,7 @@ import java.util.List;
 public class RoyalFlushEvaluate extends AbstractEvaluate {
     @Override
     public Boolean evaluate(List<Card> playerHand, List<Card> flop) {
-        Card[] union = unionArray(playerHand, flop);
+        Card[] union = unionList(playerHand, flop);
         Arrays.sort(union, byRank);
 
         boolean ace = false, //

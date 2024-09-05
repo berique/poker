@@ -1,6 +1,6 @@
-package poker;
+package poker.evaluate;
 
-import poker.evaluate.*;
+import poker.Evaluate;
 
 public enum CardEvaluation {
     ROYAL_FLUSH(new RoyalFlushEvaluate()), //

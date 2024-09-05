@@ -1,9 +1,9 @@
 package poker.evaluate;
 
+import org.junit.jupiter.api.Test;
 import poker.Card;
 import poker.Rank;
 import poker.Suit;
-import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,14 +16,16 @@ class OfKindEvaluateTest {
 
     @Test
     public void evaluate() {
-        List<Card> hands = new ArrayList<>();
-        hands.add(new Card(Rank.TEN, Suit.DIAMONDS));
-        hands.add(new Card(Rank.TEN, Suit.HEARTS));
+        List<Card> hands = List.of(new Card[]{ //
+                new Card(Rank.TEN, Suit.DIAMONDS),
+                new Card(Rank.TEN, Suit.HEARTS),
+        });
 
-        List<Card> board = new ArrayList<>();
-        board.add(new Card(Rank.TEN, Suit.SPADES));
-        board.add(new Card(Rank.TEN, Suit.CLUBS));
-        board.add(new Card(Rank.KING, Suit.CLUBS));
+        List<Card> board = List.of(new Card[]{ //
+                new Card(Rank.TEN, Suit.SPADES),
+                new Card(Rank.TEN, Suit.CLUBS),
+                new Card(Rank.KING, Suit.CLUBS),
+        });
 
         assertTrue(ofKindEvaluate.evaluate(hands, board));
     }
