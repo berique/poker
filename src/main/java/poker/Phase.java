@@ -1,7 +1,7 @@
 package poker;
 
 public enum Phase {
-    CHALLENGE(0),
+    PRE_FLOP(0),
     FLOP(3),
     TURN(1),
     RIVER(1),

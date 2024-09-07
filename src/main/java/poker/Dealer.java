@@ -30,7 +30,7 @@ public class Dealer {
     }
 
     private String padding(String s, Object phase) {
-        return s + " ".repeat(Math.max(15 - s.length(), 0)) + phase;
+        return s + " ".repeat(Math.max(16 - s.length(), 0)) + phase.toString();
     }
 
     private String repeat(String ch) {
@@ -41,26 +41,25 @@ public class Dealer {
         for (Player player : this.players) {
             List<Card> hand = player.getHand();
             out.println(padding("Player name:", player.getName()));
-            out.println(padding("Player hand:", byRank(player.getHand())));
+            out.println(padding("Player hand:", player.getHand()));
             out.println(padding("Eval:", CardValidation.validate(hand, flop)));
             out.println(repeat("-"));
         }
     }
 
-    private List<Card> byRank(List<Card> cards) {
+    private List<Card> sortByRank(final List<Card> cards) {
         return cards.stream().sorted(Comparator.comparing(Card::getRank)).toList();
     }
 
-    private void drawCards(Phase phase) {
+    private void drawCards(final Phase phase) {
         this.flop.addAll(this.deck.takeCards(phase.getTotalCards()));
-        out.println(repeat("#"));
         out.println(padding( //
                 "Flop:", //
                 this.flop //
         ));
     }
 
-    private void distributeCards(int totalCards, int totalPlayer) {
+    private void distributeCards(final int totalCards, final int totalPlayer) {
         for (int y = 0; y < totalCards; y++) {
             for (int x = 0; x < totalPlayer; x++) {
                 players.get(x).getHand().add(deck.takeOneCard());
