@@ -8,8 +8,8 @@ import java.util.List;
 
 public class StraightEvaluate extends AbstractEvaluate {
     @Override
-    public Boolean evaluate(List<Card> playerHand, List<Card> flop) {
-        Card[] allCards = unionList(playerHand, flop);
+    public Boolean evaluate(List<Card> playerHand, List<Card> community) {
+        Card[] allCards = unionList(playerHand, community);
         Arrays.sort(allCards, byRank);
         int noOfCardsInARow = 0;
         boolean hasAce = false;

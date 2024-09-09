@@ -11,8 +11,8 @@ import java.util.Map;
 
 public class FlushEvaluate extends AbstractEvaluate {
     @Override
-    public Boolean evaluate(List<Card> playerHand, List<Card> flop) {
-        List<Card> union = union(playerHand, flop);
+    public Boolean evaluate(List<Card> playerHand, List<Card> community) {
+        List<Card> union = union(playerHand, community);
         Map<Suit, List<Rank>> map = new HashMap<>();
         for (Card card : union) {
             map.computeIfAbsent(card.getSuit(), k -> new ArrayList<>());

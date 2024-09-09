@@ -6,7 +6,7 @@ import java.util.List;
 
 public class HighCardEvaluate extends AbstractEvaluate {
     @Override
-    public Boolean evaluate(List<Card> playerHand, List<Card> flop) {
+    public Boolean evaluate(List<Card> playerHand, List<Card> community) {
         return true;
     }
 }

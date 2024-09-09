@@ -11,8 +11,8 @@ import java.util.Map;
 
 public class FullHouseEvaluate extends AbstractEvaluate {
     @Override
-    public Boolean evaluate(List<Card> playerHand, List<Card> flop) {
-        List<Card> union = union(playerHand, flop);
+    public Boolean evaluate(List<Card> playerHand, List<Card> community) {
+        List<Card> union = union(playerHand, community);
         Map<Rank, List<Suit>> map = new HashMap<>();
         boolean twoOfKind = false, //
                 threeOfKind = false;

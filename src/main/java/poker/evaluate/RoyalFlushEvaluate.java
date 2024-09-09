@@ -9,8 +9,8 @@ import java.util.List;
 
 public class RoyalFlushEvaluate extends AbstractEvaluate {
     @Override
-    public Boolean evaluate(List<Card> playerHand, List<Card> flop) {
-        Card[] union = unionList(playerHand, flop);
+    public Boolean evaluate(List<Card> playerHand, List<Card> community) {
+        Card[] union = unionList(playerHand, community);
         Arrays.sort(union, byRank);
 
         boolean ace = false, //

@@ -9,8 +9,8 @@ import java.util.List;
 
 public class StraightFlushEvaluate extends AbstractEvaluate {
     @Override
-    public Boolean evaluate(List<Card> playerHand, List<Card> flop) {
-        return new StraightEvaluate().evaluate(playerHand, flop) && new FlushEvaluate().evaluate(playerHand, flop);
+    public Boolean evaluate(List<Card> playerHand, List<Card> community) {
+        return new StraightEvaluate().evaluate(playerHand, community) && new FlushEvaluate().evaluate(playerHand, community);
     }
 
 }

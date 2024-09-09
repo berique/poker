@@ -18,8 +18,8 @@ public class OfKindEvaluate extends AbstractEvaluate {
     }
 
     @Override
-    public Boolean evaluate(List<Card> playerHand, List<Card> flop) {
-        List<Card> union = union(playerHand, flop);
+    public Boolean evaluate(List<Card> playerHand, List<Card> community) {
+        List<Card> union = union(playerHand, community);
         Map<Rank, List<Suit>> map = new HashMap<>();
         for (Card card : union) {
             map.computeIfAbsent(card.getRank(), k -> new ArrayList<>());

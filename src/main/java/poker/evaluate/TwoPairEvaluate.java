@@ -8,9 +8,9 @@ import java.util.*;
 
 public class TwoPairEvaluate extends AbstractEvaluate {
     @Override
-    public Boolean evaluate(List<Card> playerHand, List<Card> flop) {
+    public Boolean evaluate(List<Card> playerHand, List<Card> community) {
         List<Card> union = new LinkedList<>(playerHand);
-        union.addAll(flop);
+        union.addAll(community);
         Map<Rank, List<Suit>> map = new HashMap<>();
         for (Card card : union) {
             map.computeIfAbsent(card.getRank(), k -> new ArrayList<>());

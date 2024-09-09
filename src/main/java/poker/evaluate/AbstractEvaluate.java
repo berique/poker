@@ -1,7 +1,6 @@
 package poker.evaluate;
 
 import poker.Card;
-import poker.Evaluate;
 
 import java.util.Comparator;
 import java.util.List;
